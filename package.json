@@ -1,0 +1,25 @@
+{
+  "name": "backendcontatos",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "start:dev": "node --watch main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luizgabe/backContatos.git"
+  },
+  "author": "Luiz Gabriel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luizgabe/backContatos/issues"
+  },
+  "homepage": "https://github.com/luizgabe/backContatos#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security"
+  }
+}
