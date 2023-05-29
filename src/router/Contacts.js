@@ -1,57 +1,20 @@
 import { Router } from "express";
-import { Database } from "../../database.js";
-import { randomUUID } from "node:crypto"
 
-const database = new Database();
-
-const tableContacts = "contacts";
+import { 
+  AddContact, 
+  AllContacts, 
+  DeleteContact, 
+  SearchContacts 
+} from "../controllers/Contacts.controller.js";
 
 const contactRoute = Router();
 
-// Rota que Lista os contatos do usuário
-contactRoute.get('/', (req, res) => {
-  res.json(database.select('contacts'))
-})
+contactRoute.get('/', AllContacts)
 
-// Rota que Busca um contato por nome ou id
-contactRoute.get('/search/:busca', (req, res) => {
-  res.send(`Busca um contato ${req.params.busca}`);
-})
+contactRoute.get('/search/:busca', SearchContacts)
 
-// Rota que adiciona um novo contato
-contactRoute.post('/', (req, res) => {
-  const {
-    id = '',
-    name = '',
-    number = '',
-    imgUrl = ''
-  } = req.body;
+contactRoute.post('/', AddContact)
 
-  if (id) { // Caso o id seja informado, é atualizado
-    database.update(tableContacts, id, {
-      name,
-      number,
-      imgUrl
-    })
-    res.send({ message: 'Contato atualizado', contact: { id, name, number, imgUrl } });
-    return
-  }
-
-  const user = {
-    id: randomUUID(),
-    name,
-    number,
-    imgUrl
-  }
-  database.insert(tableContacts, user);
-  res.status(201).json({ message: 'Contato adicionado', contact: user});
-})
-
-// Rota que deleta um contato
-contactRoute.delete('/:id', (req, res) => {
-  const { id } = req.params
-  database.delete(tableContacts, id);
-  res.send({ message: 'Contato deletado', id});
-})
+contactRoute.delete('/:id', DeleteContact)
 
 export { contactRoute }
