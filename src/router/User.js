@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 import { 
-  AllUserAndSearch, 
+  AllUsersAndSearch, 
   UserById, 
   AddUser, 
   DeleteById,
@@ -9,7 +9,7 @@ import {
 
 const userRoute = Router();
 
-userRoute.get('/', AllUserAndSearch);
+userRoute.get('/', AllUsersAndSearch);
 
 userRoute.get('/:id', UserById);
 

@@ -5,7 +5,7 @@ const database = new Database();
 
 const tableUsers = "users";
 
-const AllUserAndSearch = (req, res) => {
+const AllUsersAndSearch = (req, res) => {
   const search = req.query.search;
 
   if(!search){
@@ -13,8 +13,19 @@ const AllUserAndSearch = (req, res) => {
     return
   }
 
-  console.log(req.query.search);
-  res.send(`Bucando um usuário com a busca: ${search}`);
+  let result = [];
+  database.select(tableUsers).map((contact) => {
+    if(contact.name.toLowerCase().includes(search.toLowerCase())){
+      result.push(contact);
+      return
+    }
+    if(contact.number.toLowerCase().includes(search.toLowerCase())){
+      result.push(contact);
+      return
+    }
+  })
+  
+  res.json(result);  
 }
 
 const UserById = (req, res) => {
@@ -32,8 +43,12 @@ const AddUser = (req, res) => {
     stacks = []
   } = req.body;
 
-  if (id) {
-    database.update(tableUsers, id, { name, office, coverImg, avatarImg, stacks } );
+  if (id) { // Caso o id seja informado, é atualizado
+    if (!database.select(tableUsers, id)) {
+      res.status(400).json({ message: 'Usuário não encontrado', joke: 'proveded id not found in db' });
+      return
+    }
+    database.update(tableUsers, id, { name, office, coverImg, avatarImg, stacks });
     res.send({ message: 'Contato atualizado', user: { id, name, office, coverImg, avatarImg, stacks } });
     return
   }
@@ -49,18 +64,23 @@ const AddUser = (req, res) => {
   }
 
   database.insert(tableUsers, user);
-
   res.status(201).json({ message: 'Contato adicionado', user: user});
 }
 
 const DeleteById = (req, res) => {
   const { id } = req.params;
+
+  if (!database.select(tableUsers, id)) {
+    res.status(400).json({ message: 'Usuário não encontrado', joke: 'proveded id not found in db' });
+    return
+  }
+
   database.delete(tableUsers, id);
   res.send({ message: 'Contato deletado', id});
 }
 
 export {
-  AllUserAndSearch,
+  AllUsersAndSearch,
   UserById,
   AddUser,
   DeleteById
