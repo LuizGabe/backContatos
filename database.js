@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 
 const databasePath = new URL("./src/data/db.json", import.meta.url);
 
-export default class Database {
+export class Database {
   #database = {};
 
   constructor() {
