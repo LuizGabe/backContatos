@@ -36,6 +36,7 @@ export class Database {
       // Se sim entra aqui
       this.#database[table].push(data);
       this.#persist();
+      this.#database[table] = [...this.#database[table]];
     } else {
       // Se não entra aqui
       this.#database[table] = [data];
@@ -59,7 +60,8 @@ export class Database {
     );
 
     if (rowIndex > -1) {
-      this.#database[table][rowIndex] = { id,  ...data };
+      const dados = this.#database[table][rowIndex]
+      this.#database[table][rowIndex] = { id, ...dados, ...data };
       this.#persist();
     }
   }
