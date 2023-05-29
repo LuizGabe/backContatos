@@ -2,16 +2,13 @@ import { Router } from "express";
 
 import { 
   AddContact, 
-  AllContacts, 
-  DeleteContact, 
-  SearchContacts 
+  AllContactsAndSearch, 
+  DeleteContact,  
 } from "../controllers/Contacts.controller.js";
 
 const contactRoute = Router();
 
-contactRoute.get('/', AllContacts)
-
-contactRoute.get('/search/:busca', SearchContacts)
+contactRoute.get('/', AllContactsAndSearch)
 
 contactRoute.post('/', AddContact)
 
