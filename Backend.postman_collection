@@ -1,0 +1,380 @@
+{
+	"info": {
+		"_postman_id": "7b84e01d-4a31-48f9-9a68-2593170f3637",
+		"name": "BackEnd Lista de Contatos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23381852"
+	},
+	"item": [
+		{
+			"name": "Contatos",
+			"item": [
+				{
+					"name": "Add #1 Luiz Gabriel",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Luiz Gabriel\",\r\n    \"number\":\"55 99144-5204\",\r\n    \"imgUrl\":\"\",\r\n    \"userId\": \"940d5749-7940-43c5-b0e3-063fc6486f46\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{Port}}/contact/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"contact",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add #2 Bruna Ester",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Bruna Ester\",\r\n    \"number\":\"55 99989-9795\",\r\n    \"imgUrl\":\"\",\r\n    \"userId\": \"fda678a7-87c4-468e-9028-4ed8e9e547bd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{Port}}/contact/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"contact",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rename #1 Luiz Gabriel",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"\",\r\n    \"name\":\"Luiz Gabriel Grumicker Pereira\",\r\n    \"number\":\"55 99144-5204\",\r\n    \"imgUrl\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{Port}}/contact/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"contact",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rename #2 Bruna Ester",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"\",\r\n    \"name\":\"Bruna Ester Grumicker Pereira\",\r\n    \"number\":\"55 99989-9795\",\r\n    \"imgUrl\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{Port}}/contact/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"contact",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Contact",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{Port}}/contact/11fc5e3c-73ad-4041-9bec-c8e040e4961a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"contact",
+								"11fc5e3c-73ad-4041-9bec-c8e040e4961a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Contacts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/contact/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"contact",
+								""
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "All Users | Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/user/fda678a7-87c4-468e-9028-4ed8e9e547bd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"user",
+								"fda678a7-87c4-468e-9028-4ed8e9e547bd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add #1 | Luiz Gabriel",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Luiz Gabriel\",\r\n    \"coverImg\": \"https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=350&q=50\",\r\n    \"avatarImg\": \"https://github.com/Luizgabe.png\",\r\n    \"stacks\": [\r\n        \"Javascript\",\r\n        \"CSS\",\r\n        \"NodeJS\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{Port}}/user/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add #2 | Bruna Ester",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Bruna Ester\", \r\n    \"coverImg\": \"https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=350&q=50\", \r\n    \"avatarImg\": \"https://instagram.fsra1-1.fna.fbcdn.net/v/t51.2885-19/337807514_181500181318816_4655760792126073980_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.fsra1-1.fna.fbcdn.net&_nc_cat=104&_nc_ohc=XLfagIfQJ1YAX8vGEsM&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBla4WMJcpCVSfGnaS-B27m6KS_JyzY0qfiaMOF_BvXYg&oe=64794BDD&_nc_sid=f70a57\", \r\n    \"stacks\": [\"Ambiental\", \"Alcolica\", \"Dirigista\"]\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{Port}}/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rename #1 | Luiz Gabriel",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"-854a-a03a971144ab\",\r\n    \"name\": \"Luiz Gabriel Grumicker Pereira\",\r\n    \"office\": \"Junior Developer\",\r\n    \"coverImg\": \"https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=350&q=50\", \r\n    \"avatarImg\": \"https://github.com/Luizgabe.png\", \r\n    \"stacks\": [\"Javascript\", \"CSS\", \"NodeJS\", \"React\"]\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{Port}}/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rename #2 | Bruna Ester",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"26ba2ce7-ff61-473c-88bc-e14d52e162f7\",\r\n    \"name\": \"Bruna Ester\", \r\n    \"office\": \"Ambientalista\",\r\n    \"coverImg\": \"https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=350&q=50\", \r\n    \"avatarImg\": \"https://instagram.fsra1-1.fna.fbcdn.net/v/t51.2885-19/337807514_181500181318816_4655760792126073980_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.fsra1-1.fna.fbcdn.net&_nc_cat=104&_nc_ohc=XLfagIfQJ1YAX8vGEsM&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBla4WMJcpCVSfGnaS-B27m6KS_JyzY0qfiaMOF_BvXYg&oe=64794BDD&_nc_sid=f70a57\", \r\n    \"stacks\": [\"Ambiental\", \"Alcolica\", \"Dirigista\"]\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{Port}}/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Contact",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/user/7ac2ba97-e74e-430a-81ef-ca6deb645c9e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"user",
+								"7ac2ba97-e74e-430a-81ef-ca6deb645c9e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Opções Possiveis",
+			"request": {
+				"method": "OPTIONS",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{Port}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{Port}}"
+				}
+			},
+			"response": []
+		}
+	]
+}
