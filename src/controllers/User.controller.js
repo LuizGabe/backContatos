@@ -15,6 +15,7 @@ const AllUsersAndSearch = (req, res) => {
 
   let result = [];
   database.select(tableUsers).map((contact) => {
+    if (!contact.name || !search) return
     if(contact.name.toLowerCase().includes(search.toLowerCase())){
       result.push(contact);
       return
