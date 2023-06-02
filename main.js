@@ -1,4 +1,6 @@
 import express from 'express';
+import cors from 'cors';
+
 import { Database } from './database.js';
 import { userRoute } from './src/router/User.js';
 import { contactRoute } from './src/router/Contacts.js';
@@ -7,6 +9,15 @@ const app = express();
 const port = 3000;
 
 const database = new Database();
+
+app.use(cors({
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+}));
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  next();
+});
 
 app.use(express.json())
 
