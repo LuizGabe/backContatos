@@ -20,6 +20,13 @@ export class Database {
   }
 
   select(table, id) {
+    fs.readFile(databasePath, "utf8")
+      .then((data) => {
+        this.#database = JSON.parse(data);
+      })
+      .catch(() => {
+        this.#persist();
+      });
     let data = this.#database[table] ?? [];
 
     if (id) {
@@ -27,7 +34,7 @@ export class Database {
         return row.id === id;
       });
     }
-    
+
     return data;
   }
 
@@ -37,6 +44,14 @@ export class Database {
       this.#database[table].push(data);
       this.#persist();
       this.#database[table] = [...this.#database[table]];
+
+      fs.readFile(databasePath, "utf8")
+        .then((data) => {
+          this.#database = JSON.parse(data);
+        })
+        .catch(() => {
+          this.#persist();
+        });
     } else {
       // Se não entra aqui
       this.#database[table] = [data];

@@ -57,6 +57,7 @@ const AddContact = (req, res) => {
   }
 
   const userFromId = database.select(tableUsers, userId);
+  console.log('userFromId', userFromId)
   if (!userFromId) { // Rejeita caso o userId não seja encontrado no banco
     res.status(400).json({ message: 'Usuário criador do contato não encontrado', joke: 'userId not found' });
     return
@@ -81,6 +82,19 @@ const DeleteContact = (req, res) => {
     res.status(400).json({ message: 'Contato não encontrado', joke: 'proveded id not found in params' });
     return
   }
+
+  if (!database.select(tableContacts, id)) {
+    res.status(400).json({ message: 'Contato não encontrado', joke: 'proveded id not found in db' });
+    return
+  }
+
+  const users = database.select(tableUsers);
+  users.map((user) => {
+    if (user.contacts.includes(id)) {
+      database.update(tableUsers, user.id, { contacts: user.contacts.filter(contact => contact !== id) });
+    }
+  })
+
   database.delete(tableContacts, id);
   res.send({ message: 'Contato deletado', id});
 }
