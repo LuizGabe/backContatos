@@ -16,12 +16,8 @@ const AllUsersAndSearch = (req, res) => {
   const result = [];
   try {
     database.select(tableUsers).map((user) => {
-      if (!user.name || !user.number || !search) return
+      if(!user.name || !search) return
       if (user.name.toLowerCase().includes(search.toLowerCase())) {
-        result.push(user);
-        return
-      }
-      if (user.number.toLowerCase().includes(search.toLowerCase())) {
         result.push(user);
         return
       }
