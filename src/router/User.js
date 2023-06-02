@@ -5,7 +5,7 @@ import {
   UserById, 
   AddUser, 
   DeleteById,
-} from "../controllers/user.controller.js";
+} from "../controllers/User.controller.js";
 
 const userRoute = Router();
 

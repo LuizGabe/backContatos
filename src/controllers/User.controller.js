@@ -8,25 +8,29 @@ const tableUsers = "users";
 const AllUsersAndSearch = (req, res) => {
   const search = req.query.search;
 
-  if(!search){
+  if (!search) {
     res.json(database.select(tableUsers));
     return
   }
 
-  let result = [];
-  database.select(tableUsers).map((contact) => {
-    if (!contact.name || !search) return
-    if(contact.name.toLowerCase().includes(search.toLowerCase())){
-      result.push(contact);
-      return
-    }
-    if(contact.number.toLowerCase().includes(search.toLowerCase())){
-      result.push(contact);
-      return
-    }
-  })
-  
-  res.json(result);  
+  const result = [];
+  try {
+    database.select(tableUsers).map((user) => {
+      if (!user.name || !user.number || !search) return
+      if (user.name.toLowerCase().includes(search.toLowerCase())) {
+        result.push(user);
+        return
+      }
+      if (user.number.toLowerCase().includes(search.toLowerCase())) {
+        result.push(user);
+        return
+      }
+    })
+  } catch (error) {
+    console.log(error)
+  }
+
+  res.json(result);
 }
 
 const UserById = (req, res) => {
@@ -37,10 +41,10 @@ const UserById = (req, res) => {
 const AddUser = (req, res) => {
   const {
     id = '',
-    name = '',  
+    name = '',
     office = '',
-    coverImg = '', 
-    avatarImg = '', 
+    coverImg = '',
+    avatarImg = '',
     stacks = []
   } = req.body;
 
@@ -65,7 +69,7 @@ const AddUser = (req, res) => {
   }
 
   database.insert(tableUsers, user);
-  res.status(201).json({ message: 'Contato adicionado', user: user});
+  res.status(201).json({ message: 'Contato adicionado', user: user });
 }
 
 const DeleteById = (req, res) => {
@@ -77,7 +81,7 @@ const DeleteById = (req, res) => {
   }
 
   database.delete(tableUsers, id);
-  res.send({ message: 'Contato deletado', id});
+  res.send({ message: 'Contato deletado', id });
 }
 
 export {
