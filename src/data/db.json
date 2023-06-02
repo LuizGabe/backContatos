@@ -1,0 +1,45 @@
+{
+  "users": [
+    {
+      "id": "1dcf8eef-f1ec-4ca3-a7e8-3a13a40250b0",
+      "name": "Luiz Gabriel",
+      "office": "Junior Developer",
+      "coverImg": "https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=350&q=50",
+      "avatarImg": "https://github.com/Luizgabe.png",
+      "stacks": [
+        {
+          "Tec": "JavaScript",
+          "color": "#000"
+        },
+        {
+          "Tec": "HTML",
+          "color": "red"
+        },
+        {
+          "Tec": "CSS",
+          "color": "green"
+        },
+        {
+          "Tec": "Typescript",
+          "color": "blue"
+        },
+        {
+          "Tec": "React",
+          "color": "yellow"
+        }
+      ],
+      "contacts": [
+        "6ada31ca-601a-497a-b990-62e03a86a598"
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "id": "6ada31ca-601a-497a-b990-62e03a86a598",
+      "name": "Bruna Ester",
+      "number": "55 99989-9795",
+      "imgUrl": "",
+      "owner": "1dcf8eef-f1ec-4ca3-a7e8-3a13a40250b0"
+    }
+  ]
+}
