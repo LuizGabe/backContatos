@@ -25,8 +25,8 @@ const AllContactsAndSearch = (req, res) => {
       return
     }
   })
-  
-  res.json(result);  
+
+  res.json(result);
 }
 
 const AddContact = (req, res) => {
@@ -55,9 +55,31 @@ const AddContact = (req, res) => {
     res.status(400).json({ message: 'Usuário criador do contato não adicionado', joke: 'userId is required in body' });
     return
   }
+  const nameVerification = (name) => {
+    let retorno = true
+    database.select(tableContacts).map((contact) => {
+      if (contact.name.toLowerCase() === name.toLowerCase()) {
+        retorno = false
+      }
+    })
+    return retorno
+  }
+  const numberVerification = (number) => {
+    let retorno = true
+    database.select(tableContacts).map((contact) => {
+      if (contact.number.toLowerCase() === number.toLowerCase()) {
+        retorno = false
+      }
+    })
+    return retorno
+  }
+  if (!nameVerification(name) ||
+  !numberVerification(number)) {
+    res.status(400).json({ message: 'Nome ou Número Igual a outro contato adicionado', joke: 'name or number already exists' });
+    return
+  }
 
   const userFromId = database.select(tableUsers, userId);
-  console.log('userFromId', userFromId)
   if (!userFromId) { // Rejeita caso o userId não seja encontrado no banco
     res.status(400).json({ message: 'Usuário criador do contato não encontrado', joke: 'userId not found' });
     return
